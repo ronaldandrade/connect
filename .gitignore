@@ -1,3 +1,4 @@
 schema.db
 venv
-schema.sql
+**/__pycache__/
+.pytest_cache/
