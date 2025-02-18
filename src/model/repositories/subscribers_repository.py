@@ -1,7 +1,8 @@
 from src.model.configs.connection import DBConnectionHandler
 from src.model.entities.inscritos import Inscritos
+from .interfaces.subscribers_repository import SubscribersRepositoryInterface
 
-class SubscribersRepository:
+class SubscribersRepository(SubscribersRepositoryInterface):
     def insert(self, subscriber_infos: dict) -> None:
         with DBConnectionHandler() as db:
             try:
@@ -17,7 +18,7 @@ class SubscribersRepository:
                 db.session.rollback()
                 raise exception
             
-    def select_subscriber(self, email, evento_id: int) -> Inscritos:
+    def select_subscriber(self, email: str, evento_id: int) -> Inscritos:
         with DBConnectionHandler() as db:
             data = (
             db.session
