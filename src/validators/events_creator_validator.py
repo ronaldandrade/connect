@@ -13,4 +13,4 @@ def events_creator_validator(request:any):
     respose = body_validator.validate(request.json)
     
     if respose is False:
-        print(body_validator.errors)
+        raise Exception(body_validator.errors)
