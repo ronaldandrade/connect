@@ -21,5 +21,4 @@ def create_new_event():
     
     http_response = events_creator.create(http_request)
 
-
     return jsonify(http_response.body, http_response.status_code)

@@ -1,5 +1,5 @@
-from http_types.http_request import HttpRequest
-from http_types.http_response import HttpResponse
+from src.http_types.http_request import HttpRequest
+from src.http_types.http_response import HttpResponse
 from src.model.repositories.interfaces.subscribers_repository import SubscribersRepositoryInterface
 
 class SubscriberManager:
@@ -34,6 +34,7 @@ class SubscriberManager:
                         "subscribers": formatted_subscriber
                 }
             },
+                status_code = 200
         )
 
     def __format_event_ranking(self, event_ranking: list) -> HttpResponse:
@@ -42,15 +43,16 @@ class SubscriberManager:
             formatted_event_ranking.append(
                 {
                 "link": position.link,
-                "total_subscribers": position.position.total,
+                "total_subscribers": position.total,
             }
         )
             return HttpResponse(
                 body={
                     "data": {
-                        "Type": "Subscriber",
+                        "Type": "Ranking",
                         "count": len(formatted_event_ranking),
-                        "subscribers": formatted_event_ranking
+                        "ranking": formatted_event_ranking
                 }
             },
+                status_code = 200
         )

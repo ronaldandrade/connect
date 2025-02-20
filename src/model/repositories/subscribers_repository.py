@@ -39,7 +39,7 @@ class SubscribersRepository(SubscribersRepositoryInterface):
             .filter(
                 Inscritos.link == link, 
                 Inscritos.evento_id == event_id)
-            .all()@pytest.mark.skip('Select in DB')
+            .all()
 
             )
             return data

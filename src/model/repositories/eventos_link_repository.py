@@ -4,7 +4,7 @@ from src.model.entities.eventos_link import EventosLink
 from .interfaces.eventos_link_repository import EventosLinkRepositoryInterface
 
 class EventosLinkRepository(EventosLinkRepositoryInterface):
-    def insert(self, event_id: int, subscriber_id: id) -> None:
+    def insert(self, event_id: int, subscriber_id: int) -> None:
         with DBConnectionHandler() as db:
             try:
                 link_final = ''.join(random.choices('0123456789', k=7))
@@ -24,7 +24,7 @@ class EventosLinkRepository(EventosLinkRepositoryInterface):
                 db.session.rollback()
                 raise exception
     
-    def select_event_link(self, event_id: int, subscriber_id: id) -> EventosLink:
+    def select_events_link(self, event_id: int, subscriber_id: int) -> EventosLink:
         with DBConnectionHandler() as db:
             data = (
                 db.session
